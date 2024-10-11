@@ -1,3 +1,5 @@
-<div>
-    <!-- Well begun is half done. - Aristotle -->
-</div>
+<x-layouts.app>
+
+    <livewire:projects.index />
+
+</x-layouts.app>
