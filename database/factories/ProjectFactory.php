@@ -18,8 +18,8 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => collect(fake()->words(2))->join(' '),
-            'description' => fake()->randomHtml(),
+            'title' => fake()->jobTitle,
+            'description' => fake()->text(600),
             'ends_at' => fake()->dateTimeBetween('now', '+ 3 days'),
             'status' => fake()->randomElement(['open', 'closed']),
             'tech_stack' => fake()->randomElements(['php', 'laravel', 'javascript', 'react'],random_int(1, 3)),
