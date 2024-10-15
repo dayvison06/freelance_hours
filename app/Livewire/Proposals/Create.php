@@ -3,6 +3,8 @@
 namespace App\Livewire\Proposals;
 
 use App\Models\Project;
+use App\Models\Proposal;
+use App\Notifications\NewProposal;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
@@ -30,7 +32,10 @@ class Create extends Component
         $this->project->proposals()
             ->updateOrCreate(
                 ['email' => $this->email],
-                ['hours' => $this->hours]);
+                ['hours' => $this->hours]
+            );
+
+        $this->project->author->notify(new NewProposal($this->project));
 
         $this->dispatch('proposalCreated');
 
