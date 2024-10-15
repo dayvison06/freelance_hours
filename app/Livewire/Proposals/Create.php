@@ -28,11 +28,15 @@ class Create extends Component
         }
 
         $this->project->proposals()
-            ->updateOrCreate(['email' => $this->email],
+            ->updateOrCreate(
+                ['email' => $this->email],
                 ['hours' => $this->hours]);
+
+        $this->dispatch('proposalCreated');
 
         return  redirect()->route('projects.show', $this->project)->with('success', 'Proposta enviada com sucesso!');
     }
+
     public function render()
     {
         return view('livewire.proposals.create');
